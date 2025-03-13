@@ -11,6 +11,8 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
 
 
 FROM alpine:3.20
+RUN apk update && \
+    apk upgrade --no-cache
 COPY --from=builder /usr/local/bin/litestream /usr/local/bin/litestream
 ENTRYPOINT ["/usr/local/bin/litestream"]
 CMD []
